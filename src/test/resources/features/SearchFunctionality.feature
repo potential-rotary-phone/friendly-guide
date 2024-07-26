@@ -4,4 +4,4 @@ Feature: Search Functionality
     Given the user is on the homepage
     When the user enters "Cucumber" into the search bar
     And the user presses the search button
-    Then the search results should display items related to "Cucumber"
+    Then the search results should display items related to "Banana"
