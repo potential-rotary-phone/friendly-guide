@@ -1,27 +1,32 @@
 package stepdefinitions;
 
-import calculator.Calculator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+
+class IsItFriday {
+    static String isItFriday(String today) {
+        return "Nope";
+    }
+}
 
 public class SearchSteps {
-    private Calculator calculator;
-    private String result;
+    private String today;
+    private String actualAnswer;
 
-    @Given("the calculator is started")
-    public void the_calculator_is_started() {
-        calculator = new Calculator();
+    @Given("today is Sunday")
+    public void today_is_Sunday() {
+        today = "Sunday";
     }
 
-    @When("the user enters {string}")
-    public void the_user_enters(String expression) {
-        result = calculator.evaluate(expression);
+    @When("I ask whether it's Friday yet")
+    public void i_ask_whether_it_s_Friday_yet() {
+        actualAnswer = IsItFriday.isItFriday(today);
     }
 
-    @Then("the result should be {string}")
-    public void the_result_should_be(String expectedResult) {
-        assertEquals(expectedResult, result);
+    @Then("I should be told {string}")
+    public void i_should_be_told(String expectedAnswer) {
+        assertEquals(expectedAnswer, actualAnswer);
     }
 }
